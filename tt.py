@@ -92,4 +92,6 @@ async def handle_choice(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # === LANCEMENT ===
 app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
 app.add_handler(CommandHandler("start", start))
-app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), handle_choi
+app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), handle_choice))
+
+
