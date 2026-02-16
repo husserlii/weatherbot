@@ -5,8 +5,8 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler, MessageHandler, filters
 
 # === CONFIGURATION ===
+import os
 TELEGRAM_TOKEN = os.getenv("BOT_TOKEN")
-PRAYER_API_URL = "https://api.aladhan.com/v1/timings"
 
 if not TELEGRAM_TOKEN:
     raise ValueError("BOT_TOKEN non défini dans les variables d'environnement")
@@ -93,5 +93,6 @@ async def handle_choice(update: Update, context: ContextTypes.DEFAULT_TYPE):
 app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
 app.add_handler(CommandHandler("start", start))
 app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), handle_choice))
+
 
 
